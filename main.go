@@ -8,7 +8,6 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
-	"regexp"
 	"strings"
 	"time"
 )
@@ -64,7 +63,6 @@ func readAnonymousMessage(r *http.Request) string {
 		return "Slack bug; inform the team."
 	}
 	msg := strings.TrimSpace(r.Form[keyText][0])
-	msg = strings.TrimSpace(matches[2])
 	err = sendAnonymousMessage(msg)
 	if err != nil {
 		return "Failed to send message."
