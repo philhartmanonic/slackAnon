@@ -64,14 +64,11 @@ func readAnonymousMessage(r *http.Request) string {
 		return "Slack bug; inform the team."
 	}
 	msg := strings.TrimSpace(r.Form[keyText][0])
-	matches := payloadExp.FindStringSubmatch(msg)
-	user := matches[1]
 	msg = strings.TrimSpace(matches[2])
-	err = sendAnonymousMessage(user, msg)
+	err = sendAnonymousMessage(msg)
 	if err != nil {
 		return "Failed to send message."
 	}
-	return fmt.Sprintf("Anonymously sent [%s] to %s", msg, user)
 }
 
 // sendAnonymousMessage uses an incoming hook to Direct Message
