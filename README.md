@@ -1,4 +1,5 @@
 # slackAnon
+This is almost entirely the code from anonymous-slack here: https://github.com/recursionpharma/anonymous-slack
 A Heroku service to post anonymously to Slack. Your post shows up under the guise of a random animal: `an anonymous aardvark says: [your message]`.
 
 As a slack administrator:
