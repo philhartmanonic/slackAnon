@@ -82,7 +82,7 @@ func sendAnonymousMessage(message string) error {
 	if err != nil {
 		return err
 	}
-	err = http.Post(url, bytes.NewBuffer(payload))
+	_, err = http.Post(url, "application/json", bytes.NewBuffer(payload))
 	return err
 }
 
