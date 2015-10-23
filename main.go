@@ -67,6 +67,7 @@ func readAnonymousMessage(r *http.Request) string {
 	if err != nil {
 		return "Failed to send message."
 	}
+	return fmt.Sprintf("Anonymously sent [%s]", msg)
 }
 
 // sendAnonymousMessage uses an incoming hook to Direct Message
@@ -81,7 +82,7 @@ func sendAnonymousMessage(message string) error {
 	if err != nil {
 		return err
 	}
-	err = http.Post(url, "application/json", bytes.NewBuffer(payload))
+	err = http.Post(url, bytes.NewBuffer(payload))
 	return err
 }
 
