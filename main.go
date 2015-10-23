@@ -47,7 +47,7 @@ var (
 		"rhino", "sheep", "shrew", "skunk", "slow loris", "squirrel", "turtle", "walrus", "wolf", "wolverine", "wombat",
 	}
 	// Username must be first.
-	payloadExp = regexp.MustCompile(`([@#][^\s]+):?(.*)`)
+	
 )
 
 // readAnonymousMessage parses the username and re-routes
@@ -66,7 +66,7 @@ func readAnonymousMessage(r *http.Request) string {
 		return "Slack bug; inform the team."
 	}
 	msg := strings.TrimSpace(r.Form[keyText][0])
-	matches := payloadExp.FindStringSubmatch(msg)
+	
 	user := matches[1]
 	msg = strings.TrimSpace(matches[2])
 	err = sendAnonymousMessage(user, msg)
