@@ -73,11 +73,11 @@ func readAnonymousMessage(r *http.Request) string {
 
 // sendAnonymousMessage uses an incoming hook to Direct Message
 // the given user the message, from a random animal.
-func sendAnonymousMessage(username, message string) error {
+func sendAnonymousMessage(message string) error {
 	url := os.Getenv(webhookConfig)
 	payload, err := json.Marshal(slackMsg{
 		Text:     message,
-		Channel:  username,
+		Channel:  '#anon'
 		Username: fmt.Sprintf("an anonymous %s", animals[rand.Intn(len(animals))]),
 	})
 	if err != nil {
